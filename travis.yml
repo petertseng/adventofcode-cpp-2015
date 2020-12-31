@@ -1,0 +1,7 @@
+# Travis currently defaults to Xenial,
+# which has gcc 5.4.0, which doesn't have <variant>
+# Feel free to remove this line if Bionic (or later) becomes default.
+dist: bionic
+
+language: cpp
+script: ruby build.rb --multistd
