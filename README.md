@@ -36,3 +36,14 @@ I could have written a utility function that does it, but for the most part I ju
 
 I appreciate that they exist at all, but typing out the type is a little inconvenient compared to something like `(int, int)`.
 No pattern-matching either, as far as I can tell.
+
+### Regular expressions
+
+I like them as much as the next person but they do increase the compilation time by a lot.
+So for the sake of faster compilation I usually go without.
+
+### Range-based `for`
+
+They're nice, but when iterating over a string, do I really have to use `for (const char& c : s)`?
+Why not just `for (char c : s)`?
+The latter does compile; is there some performance reason not to do that?
