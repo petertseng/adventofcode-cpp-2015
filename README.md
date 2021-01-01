@@ -20,4 +20,19 @@ Some may additionally support other ways:
 
 ## Language notes
 
-* None yet.
+### String splitting
+
+Not psrticularly impressed with the abilities of splitting a string by a delimiter.
+As I see it, the options here are:
+
+* `find` and `substr`
+* `getline`
+* `scanf`
+* Regular expressions
+
+I could have written a utility function that does it, but for the most part I just intermingled parsing and solving.
+
+### `pair`s
+
+I appreciate that they exist at all, but typing out the type is a little inconvenient compared to something like `(int, int)`.
+No pattern-matching either, as far as I can tell.
