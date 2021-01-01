@@ -1,4 +1,5 @@
 day_libs = {
+  4 => 'md5.cpp',
 }.each_value(&:freeze).freeze
 day_stds = {
 }.each_value(&:freeze).freeze
