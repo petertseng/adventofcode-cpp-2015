@@ -32,7 +32,7 @@ As I see it, the options here are:
 
 I could have written a utility function that does it, but for the most part I just intermingled parsing and solving.
 
-### `pair`s
+### `pair`s and `tuple`s
 
 I appreciate that they exist at all, but typing out the type is a little inconvenient compared to something like `(int, int)`.
 No pattern-matching either, as far as I can tell.
@@ -47,3 +47,7 @@ So for the sake of faster compilation I usually go without.
 They're nice, but when iterating over a string, do I really have to use `for (const char& c : s)`?
 Why not just `for (char c : s)`?
 The latter does compile; is there some performance reason not to do that?
+
+### `variant`s (discriminated union, sum type)
+
+Usable, but `visit` is a little unergonomic, specifically having to do that `overload` thing.

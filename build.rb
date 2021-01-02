@@ -2,6 +2,8 @@ day_libs = {
   4 => 'md5.cpp',
 }.each_value(&:freeze).freeze
 day_stds = {
+  # variant
+  7 => 'c++17',
 }.each_value(&:freeze).freeze
 
 stds = %w(c++11 c++14 c++17).map(&:freeze).freeze
