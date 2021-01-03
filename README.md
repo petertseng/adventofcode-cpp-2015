@@ -57,3 +57,10 @@ Usable, but `visit` is a little unergonomic, specifically having to do that `ove
 ### Vectors
 
 Really wish there were a more convenient way to print the contents of a vector instead of having to write out the `for` loop.
+
+### References
+
+Not ideal for me.
+It's too easy to forget to write the `&` in the function signature and thereby fail to modify what you wanted to modify (if non-const) or accidentally copy (if const).
+Since the call is same either way (doesn't require `&` or anything at the call site), there isn't really anything that prevents this.
+It also means you can't tell from the call site whether the arguments will be modified.
