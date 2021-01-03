@@ -67,3 +67,7 @@ Not ideal for me.
 It's too easy to forget to write the `&` in the function signature and thereby fail to modify what you wanted to modify (if non-const) or accidentally copy (if const).
 Since the call is same either way (doesn't require `&` or anything at the call site), there isn't really anything that prevents this.
 It also means you can't tell from the call site whether the arguments will be modified.
+
+### `enum class`
+
+Helpful, but I wish I could associate data with each.
