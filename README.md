@@ -51,3 +51,7 @@ The latter does compile; is there some performance reason not to do that?
 ### `variant`s (discriminated union, sum type)
 
 Usable, but `visit` is a little unergonomic, specifically having to do that `overload` thing.
+
+### Vectors
+
+Really wish there were a more convenient way to print the contents of a vector instead of having to write out the `for` loop.
