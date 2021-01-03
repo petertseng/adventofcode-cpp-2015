@@ -22,6 +22,7 @@ Some may additionally support other ways:
 * 20 (Factors): Pass the target number of gifts in ARGV.
 * 21 (RPG): Pass the boss's HP, damage, and armour in ARGV, in that order.
 * 22 (Wizard): Pass the boss's HP and damage in ARGV, in that order.
+* 25 (Triangular): Pass the row and column number in ARGV, in that order.
 
 ## Language notes
 
