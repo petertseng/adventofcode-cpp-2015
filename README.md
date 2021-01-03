@@ -21,6 +21,7 @@ Some may additionally support other ways:
 * 11 (Passwords): Pass the initial password in ARGV.
 * 20 (Factors): Pass the target number of gifts in ARGV.
 * 21 (RPG): Pass the boss's HP, damage, and armour in ARGV, in that order.
+* 22 (Wizard): Pass the boss's HP and damage in ARGV, in that order.
 
 ## Language notes
 
