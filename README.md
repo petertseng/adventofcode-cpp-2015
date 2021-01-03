@@ -20,6 +20,7 @@ Some may additionally support other ways:
 * 10 (Look and Say): Pass the seed sequence in ARGV.
 * 11 (Passwords): Pass the initial password in ARGV.
 * 20 (Factors): Pass the target number of gifts in ARGV.
+* 21 (RPG): Pass the boss's HP, damage, and armour in ARGV, in that order.
 
 ## Language notes
 
