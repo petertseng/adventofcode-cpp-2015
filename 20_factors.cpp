@@ -1,37 +1,67 @@
-#include <cstdlib>
+#include <array>
 #include <fstream>
 #include <iostream>
 #include <sys/stat.h>
-#include <vector>
+#include <unordered_map>
 
 namespace {
 
-int house(int target, int present_mult, int limit) {
-  const int upper_bound = target / present_mult;
-  // Hmm, ISO C++ forbids variable length array;
-  // shall I use a vector, or shall I just use a fixed size?
-  // nope, can't make an array that big (segfaults)
-  //int presents2[4'000'000];
-  //std::fill(presents2, presents2 + sizeof(presents2) / sizeof(presents2[0]), 0);
-  std::vector<int> presents(upper_bound, 0);
+const std::array<int, 15> PRIMES{49, 43, 41, 37, 31, 29, 23, 19, 17, 13, 11, 7, 5, 3, 2};
+const int max_prime = PRIMES[0];
 
-  for (int elf = 1; elf < upper_bound; elf++) {
-    presents[elf] += elf * present_mult;
-    if (presents[elf] >= target) {
-      return elf;
-    }
-    for (int m = 2; m <= limit && elf * m < upper_bound; m ++) {
-      presents[elf * m] += elf * present_mult;
-    }
+// askalski's tip:
+// https://www.reddit.com/r/adventofcode/comments/po1zel/comment/hd1esc2
+int sum_exceeds(int goal, size_t prime_i, std::unordered_map<int, int>& cache) {
+  if (prime_i >= PRIMES.size()) {
+    return goal;
   }
 
-  std::cerr << "bad, " << upper_bound << " too low upper bound for " << target << std::endl;
-  std::abort();
+  int cache_key = goal * static_cast<int>(PRIMES.size()) + prime_i;
+  auto cached = cache.find(cache_key);
+  if (cached != cache.end()) {
+    return cached->second;
+  }
+
+  int best = sum_exceeds(goal, prime_i + 1, cache);
+
+  int prime = PRIMES[prime_i];
+  int prime_power = 1;
+  int prime_sum = 1;
+
+  while (prime_sum < goal) {
+    prime_power *= prime;
+    prime_sum += prime_power;
+
+    // subproblem: ceil(goal/prime_sum) using only primes less than prime
+    int subgoal = (goal + prime_sum - 1) / prime_sum;
+    best = std::min(best, prime_power * sum_exceeds(subgoal, prime_i + 1, cache));
+  }
+
+  cache.emplace(cache_key, best);
+  return best;
+}
+
+bool good2(int house, int target) {
+  int elves = 0;
+  for (int div = 1; div <= 50; div++) {
+    if (house % div == 0) {
+      elves += house / div;
+    }
+  }
+  return 11 * elves >= target;
 }
 
 void solve(int target) {
-  std::cout << house(target, 10, target) << std::endl;
-  std::cout << house(target, 11, 50) << std::endl;
+  std::unordered_map<int, int> cache;
+  int house1 = sum_exceeds(target / 10, 0, cache);
+  std::cout << house1 << std::endl;
+
+  for (int i = good2(house1, target) ? 0 : house1; i < target; i += 2 * 3 * 5 * 7) {
+    if (good2(i, target)) {
+      std::cout << i << std::endl;
+      return;
+    }
+  }
 }
 
 void solve(std::istream& is) {
