@@ -72,3 +72,7 @@ It also means you can't tell from the call site whether the arguments will be mo
 ### `enum class`
 
 Helpful, but I wish I could associate data with each.
+
+### unsigned
+
+The most interesting discussion I found of this was actually on the Rust subreddit: https://www.reddit.com/r/rust/comments/931leq/why_are_i32s_the_fastest/e3a3eop/
